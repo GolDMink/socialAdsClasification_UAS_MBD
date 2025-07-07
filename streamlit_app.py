@@ -109,33 +109,33 @@ def main():
         st.stop()
     
     # Sidebar
-    st.sidebar.title("⚙️ Navigasi")
+    st.sidebar.title("Navigasi")
     page = st.sidebar.selectbox(
         "Pilih halaman:",
-        ["🏡 Beranda", "📈 Ikhtisar Dataset", "🎯 Buat Prediksi", "📊 Performa Model", "ℹ️ Tentang"]
+        ["Beranda", "Ikhtisar Dataset", "Buat Prediksi", "Performa Model", "Tentang"]
     )
     
-    if page == "🏡 Beranda":
+    if page == "Beranda":
         show_home_page(df, model_metrics)
-    elif page == "📈 Ikhtisar Dataset":
+    elif page == "Ikhtisar Dataset":
         show_dataset_overview(df)
-    elif page == "🎯 Buat Prediksi":
+    elif page == "Buat Prediksi":
         show_prediction_page(model, scaler, label_encoder, feature_info)
-    elif page == "📊 Performa Model":
+    elif page == "Performa Model":
         show_model_performance(model_metrics, df)
-    elif page == "ℹ️ Tentang":
+    elif page == "Tentang":
         show_about_page()
 
 def show_home_page(df, model_metrics):
     """Tampilkan halaman beranda dengan ikhtisar"""
-    st.markdown('<h2 class="sub-header">🎯 Ikhtisar Proyek</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Ikhtisar Proyek</h2>', unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
     
     with col1:
         st.markdown("""
         <div class="metric-card">
-            <h3>📈 Info Dataset</h3>
+            <h3>Info Dataset</h3>
             <p><strong>Total Data:</strong> {}</p>
             <p><strong>Fitur:</strong> Usia, Gaji, Jenis Kelamin</p>
             <p><strong>Target:</strong> Keputusan Pembelian</p>
@@ -145,7 +145,7 @@ def show_home_page(df, model_metrics):
     with col2:
         st.markdown("""
         <div class="metric-card">
-            <h3>🤖 Info Model</h3>
+            <h3>Info Model</h3>
             <p><strong>Algoritma:</strong> Random Forest</p>
             <p><strong>Akurasi:</strong> {:.2f}%</p>
             <p><strong>Skor AUC:</strong> {:.3f}</p>
@@ -158,7 +158,7 @@ def show_home_page(df, model_metrics):
     with col3:
         st.markdown("""
         <div class="metric-card">
-            <h3>🎯 Kasus Penggunaan</h3>
+            <h3>Kasus Penggunaan</h3>
             <p>• Penargetan Kampanye Marketing</p>
             <p>• Segmentasi Pelanggan</p>
             <p>• Prediksi Penjualan</p>
@@ -166,7 +166,7 @@ def show_home_page(df, model_metrics):
         """, unsafe_allow_html=True)
     
     # Quick stats
-    st.markdown('<h2 class="sub-header">📊 Statistik Cepat</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Statistik Cepat</h2>', unsafe_allow_html=True)
     
     col1, col2, col3, col4 = st.columns(4)
     
@@ -185,12 +185,12 @@ def show_home_page(df, model_metrics):
         st.metric("Rasio Pria", f"{male_ratio:.1%}")
     
     # Sample data
-    st.markdown('<h2 class="sub-header">🔍 Contoh Data</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Contoh Data</h2>', unsafe_allow_html=True)
     st.dataframe(df.head(10), use_container_width=True)
 
 def show_dataset_overview(df):
     """Tampilkan ikhtisar dataset dan visualisasi"""
-    st.markdown('<h2 class="sub-header">📊 Ikhtisar Dataset</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Ikhtisar Dataset</h2>', unsafe_allow_html=True)
     
     # Dataset info
     col1, col2 = st.columns(2)
@@ -210,7 +210,7 @@ def show_dataset_overview(df):
         st.write(df.describe())
     
     # Visualizations
-    st.markdown('<h2 class="sub-header">📈 Visualisasi Data</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Visualisasi Data</h2>', unsafe_allow_html=True)
     
     # Target distribution
     col1, col2 = st.columns(2)
@@ -295,7 +295,7 @@ def show_dataset_overview(df):
 
 def show_prediction_page(model, scaler, label_encoder, feature_info):
     """Tampilkan halaman prediksi"""
-    st.markdown('<h2 class="sub-header">🔮 Buat Prediksi Pembelian</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Buat Prediksi Pembelian</h2>', unsafe_allow_html=True)
     
     # Input form
     st.markdown("### Masukkan Informasi Pelanggan:")
@@ -316,7 +316,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
     gender_eng = gender_map[gender]
     
     # Prediction button
-    if st.button("🔮 Prediksi Keputusan Pembelian", type="primary"):
+    if st.button("Prediksi Keputusan Pembelian", type="primary"):
         # Prepare input data
         input_data = pd.DataFrame({
             'Age': [age],
@@ -336,12 +336,12 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
         prediction_proba = model.predict_proba(input_scaled)[0]
         
         # Display result
-        st.markdown("### 🎯 Hasil Prediksi:")
+        st.markdown("### Hasil Prediksi:")
         
         if prediction == 1:
             st.markdown(f"""
             <div class="prediction-result will-buy">
-                ✅ AKAN MEMBELI
+                AKAN MEMBELI
                 <br>
                 Probabilitas: {prediction_proba[1]:.1%}
             </div>
@@ -349,14 +349,14 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
         else:
             st.markdown(f"""
             <div class="prediction-result will-not-buy">
-                ❌ TIDAK AKAN MEMBELI
+                TIDAK AKAN MEMBELI
                 <br>
                 Probabilitas: {prediction_proba[0]:.1%}
             </div>
             """, unsafe_allow_html=True)
         
         # Show probabilities
-        st.markdown("### 📊 Probabilitas Prediksi:")
+        st.markdown("### Probabilitas Prediksi:")
         
         col1, col2 = st.columns(2)
         
@@ -382,7 +382,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
         st.plotly_chart(fig_prob, use_container_width=True)
         
         # Feature importance for this prediction
-        st.markdown("### 🔍 Kontribusi Fitur:")
+        st.markdown("### Kontribusi Fitur:")
         
         feature_names = ['Usia', 'Estimasi Gaji', 'Jenis Kelamin']
         feature_values = [age, salary, gender]
@@ -401,7 +401,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
         st.plotly_chart(fig_importance, use_container_width=True)
     
     # Batch prediction
-    st.markdown("### 📁 Prediksi Batch")
+    st.markdown("### Prediksi Batch")
     st.markdown("Unggah file CSV dengan kolom: Age, EstimatedSalary, Gender")
     
     uploaded_file = st.file_uploader("Pilih file CSV", type="csv")
@@ -430,7 +430,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
                 batch_df['Keputusan'] = batch_df['Prediksi'].map({0: 'Tidak Akan Membeli', 1: 'Akan Membeli'})
                 
                 # Display results
-                st.markdown("### 📊 Hasil Prediksi Batch:")
+                st.markdown("### Hasil Prediksi Batch:")
                 st.dataframe(batch_df, use_container_width=True)
                 
                 # Summary statistics
@@ -440,7 +440,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
                 # Download results
                 csv = batch_df.to_csv(index=False)
                 st.download_button(
-                    label="📥 Unduh Hasil",
+                    label="Unduh Hasil",
                     data=csv,
                     file_name="hasil_prediksi.csv",
                     mime="text/csv"
@@ -454,7 +454,7 @@ def show_prediction_page(model, scaler, label_encoder, feature_info):
 
 def show_model_performance(model_metrics, df):
     """Tampilkan metrik performa model"""
-    st.markdown('<h2 class="sub-header">📈 Performa Model</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Performa Model</h2>', unsafe_allow_html=True)
     
     # Performance metrics
     col1, col2, col3, col4 = st.columns(4)
@@ -496,7 +496,7 @@ def show_model_performance(model_metrics, df):
         st.metric("Recall", f"{recall:.3f}")
     
     # Confusion Matrix
-    st.markdown("### 🔍 Matriks Konfusi")
+    st.markdown("### Matriks Konfusi")
     
     if 'confusion_matrix' in model_metrics:
         cm = np.array(model_metrics['confusion_matrix'])
@@ -512,107 +512,103 @@ def show_model_performance(model_metrics, df):
         st.plotly_chart(fig_cm, use_container_width=True)
     
     # Feature Importance
-    st.markdown("### 🎯 Kepentingan Fitur")
+    st.markdown("### Kepentingan Fitur")
     
-    if 'feature_importance' in model_metrics:
+    if hasattr(model, 'feature_importances_'):
         feature_names = ['Usia', 'Estimasi Gaji', 'Jenis Kelamin']
-        importance_values = list(model_metrics['feature_importance'].values())
+        importance_df = pd.DataFrame({
+            'Fitur': feature_names,
+            'Kepentingan': model.feature_importances_
+        })
         
         fig_importance = px.bar(
-            x=feature_names,
-            y=importance_values,
-            title="Kepentingan Fitur",
-            labels={'x': 'Fitur', 'y': 'Skor Kepentingan'}
+            importance_df, x='Fitur', y='Kepentingan',
+            title="Kepentingan Fitur dalam Model",
+            labels={'Kepentingan': 'Skor Kepentingan'}
         )
         st.plotly_chart(fig_importance, use_container_width=True)
     
     # Classification Report
-    st.markdown("### 📊 Laporan Klasifikasi Detail")
+    st.markdown("### Laporan Klasifikasi Detail")
     
     if 'classification_report' in model_metrics:
-        try:
-            report_df = pd.DataFrame(model_metrics['classification_report']).transpose()
+        report = model_metrics['classification_report']
+        if isinstance(report, dict):
+            # Convert to DataFrame for better display
+            report_df = pd.DataFrame(report).transpose()
             st.dataframe(report_df, use_container_width=True)
-        except Exception as e:
-            st.error(f"Error menampilkan laporan klasifikasi: {e}")
+        else:
+            st.text(report)
     
-    # Cross-validation scores
-    st.markdown("### 🔄 Performa Validasi Silang")
-    
-    cv_scores = model_metrics.get('cv_scores', [])
-    if cv_scores:
-        fig_cv = px.bar(
-            x=[f'Lipatan {i+1}' for i in range(len(cv_scores))],
-            y=cv_scores,
-            title="Skor Validasi Silang",
-            labels={'x': 'Lipatan', 'y': 'Skor Akurasi'}
+    # ROC Curve (if available)
+    if 'roc_curve' in model_metrics:
+        fpr, tpr, _ = model_metrics['roc_curve']
+        fig_roc = px.line(
+            x=fpr, y=tpr,
+            title=f"ROC Curve (AUC = {model_metrics.get('auc_score', 0):.3f})",
+            labels={'x': 'False Positive Rate', 'y': 'True Positive Rate'}
         )
-        st.plotly_chart(fig_cv, use_container_width=True)
-        
-        st.metric("Rata-rata Skor CV", f"{np.mean(cv_scores):.3f} ± {np.std(cv_scores):.3f}")
+        fig_roc.add_shape(
+            type='line', line=dict(dash='dash'),
+            x0=0, x1=1, y0=0, y1=1
+        )
+        st.plotly_chart(fig_roc, use_container_width=True)
 
 def show_about_page():
     """Tampilkan halaman tentang"""
-    st.markdown('<h2 class="sub-header">📋 Tentang Proyek Ini</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">Tentang Proyek Ini</h2>', unsafe_allow_html=True)
     
     st.markdown("""
-    ## 🎯 Ikhtisar Proyek
+    ## Ikhtisar Proyek
     
-    Prediksi Pembelian Iklan Jejaring Sosial ini adalah aplikasi pembelajaran mesin yang memprediksi apakah pelanggan akan membeli produk berdasarkan informasi demografis mereka.
+    Proyek ini mengembangkan model machine learning untuk memprediksi keputusan pembelian pelanggan 
+    berdasarkan data demografis mereka. Model ini dapat membantu perusahaan dalam strategi pemasaran 
+    dan penargetan pelanggan yang lebih efektif.
     
-    ## 📊 Dataset
+    ## Dataset
     
-    Dataset berisi informasi tentang pelanggan termasuk:
+    Dataset yang digunakan adalah "Social Network Ads" yang berisi informasi tentang:
     - **Usia**: Usia pelanggan
-    - **Estimasi Gaji**: Perkiraan gaji tahunan pelanggan
-    - **Jenis Kelamin**: Jenis kelamin pelanggan (Pria/Wanita)
-    - **Pembelian**: Apakah pelanggan membeli produk (variabel target)
+    - **Estimasi Gaji**: Perkiraan pendapatan tahunan
+    - **Jenis Kelamin**: Pria atau Wanita
+    - **Keputusan Pembelian**: Target variable (0 = Tidak Membeli, 1 = Membeli)
     
-    ## 🤖 Model
+    ## Model
     
     - **Algoritma**: Random Forest Classifier
-    - **Fitur**: Usia, Estimasi Gaji, Jenis Kelamin (dikodekan)
     - **Preprocessing**: StandardScaler untuk normalisasi fitur
-    - **Evaluasi**: Validasi silang dengan metrik akurasi, presisi, recall, dan AUC
+    - **Evaluasi**: Cross-validation dengan berbagai metrik
     
-    ## 🚀 Fitur
+    ## Fitur
     
-    1. **Prediksi Individual**: Prediksi keputusan pembelian untuk satu pelanggan
-    2. **Prediksi Batch**: Unggah file CSV untuk prediksi multiple
-    3. **Visualisasi Data**: Grafik dan diagram interaktif
-    4. **Performa Model**: Metrik dan analisis performa detail
-    5. **Kepentingan Fitur**: Memahami fitur mana yang paling berpengaruh
+    - **Prediksi Individual**: Input manual untuk satu pelanggan
+    - **Prediksi Batch**: Upload file CSV untuk prediksi massal
+    - **Visualisasi**: Grafik interaktif untuk analisis data
+    - **Metrik Performa**: Evaluasi komprehensif model
+    - **Interpretabilitas**: Analisis kepentingan fitur
     
-    ## 🛠️ Teknologi yang Digunakan
+    ## Teknologi yang Digunakan
     
     - **Frontend**: Streamlit
     - **Machine Learning**: Scikit-learn
-    - **Pemrosesan Data**: Pandas, NumPy
+    - **Data Processing**: Pandas, NumPy
     - **Visualisasi**: Plotly, Matplotlib, Seaborn
-    - **Penyimpanan Model**: Joblib
+    - **Deployment**: Docker, Hugging Face Spaces
     
-    ## 📈 Aplikasi Bisnis
+    ## Aplikasi Bisnis
     
-    - **Penargetan Kampanye Marketing**: Identifikasi pelanggan yang paling mungkin membeli
-    - **Segmentasi Pelanggan**: Kelompokkan pelanggan berdasarkan probabilitas pembelian
-    - **Peramalan Penjualan**: Prediksi penjualan berdasarkan demografi pelanggan
-    - **Alokasi Sumber Daya**: Optimasi pengeluaran marketing pada pelanggan berprospek tinggi
+    Model ini dapat digunakan untuk:
+    - Penargetan kampanye pemasaran
+    - Segmentasi pelanggan
+    - Prediksi penjualan
+    - Optimasi strategi bisnis
     
-    ## 🔮 Pengembangan Masa Depan
+    ## Pengembangan Masa Depan
     
-    - Tambah fitur demografis
-    - Implementasi metode ensemble
-    - Pelatihan ulang model secara real-time
-    - Kerangka kerja A/B testing
-    - Segmentasi pelanggan lanjutan
-    
-    ## 📞 Kontak
-    
-    Untuk pertanyaan atau saran tentang proyek ini, silakan hubungi tim pengembang.
-    
-    ---
-    
-    **Dibuat dengan ❤️ menggunakan Streamlit dan Scikit-learn**
+    - Integrasi dengan lebih banyak fitur demografis
+    - Implementasi model ensemble yang lebih kompleks
+    - Dashboard analytics real-time
+    - API untuk integrasi dengan sistem lain
     """)
 
 if __name__ == "__main__":
