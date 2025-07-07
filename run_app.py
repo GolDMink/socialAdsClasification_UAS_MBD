@@ -22,7 +22,7 @@ def check_requirements():
             missing_files.append(file)
     
     if missing_files:
-        print("❌ Missing required files:")
+        print("ERROR: Missing required files:")
         for file in missing_files:
             print(f"   - {file}")
         return False
@@ -45,10 +45,10 @@ def check_model_files():
             missing_models.append(file)
     
     if missing_models:
-        print("⚠️ Missing model files:")
+        print("WARNING: Missing model files:")
         for file in missing_models:
             print(f"   - {file}")
-        print("\n💡 Please run the Jupyter notebook 'social_network_ads_classification.ipynb' first to generate model files.")
+        print("\nTIP: Please run the Jupyter notebook 'social_network_ads_classification.ipynb' first to generate model files.")
         return False
     
     return True
@@ -56,34 +56,34 @@ def check_model_files():
 def install_requirements():
     """Install required packages"""
     try:
-        print("📦 Installing requirements...")
+        print("INSTALL: Installing requirements...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
-        print("✅ Requirements installed successfully!")
+        print("OK: Requirements installed successfully!")
         return True
     except subprocess.CalledProcessError:
-        print("❌ Failed to install requirements")
+        print("ERROR: Failed to install requirements")
         return False
 
 def run_streamlit():
     """Run the Streamlit application"""
     try:
-        print("🚀 Starting Streamlit application...")
-        print("📱 The app will open in your browser at: http://localhost:8501")
-        print("🛑 Press Ctrl+C to stop the application")
+        print("START: Starting Streamlit application...")
+        print("WEB: The app will open in your browser at: http://localhost:8501")
+        print("STOP: Press Ctrl+C to stop the application")
         subprocess.run([sys.executable, "-m", "streamlit", "run", "streamlit_app.py"])
     except KeyboardInterrupt:
-        print("\n👋 Application stopped by user")
+        print("\nBYE: Application stopped by user")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Failed to run Streamlit: {e}")
+        print(f"ERROR: Failed to run Streamlit: {e}")
 
 def main():
     """Main function"""
-    print("🛍️ Social Network Ads Predictor")
+    print("Social Network Ads Predictor")
     print("=" * 50)
     
     # Check if we're in the right directory
     if not os.path.exists('streamlit_app.py'):
-        print("❌ Please run this script from the klasifikasiSocialAds directory")
+        print("ERROR: Please run this script from the klasifikasiSocialAds directory")
         sys.exit(1)
     
     # Check required files
@@ -104,15 +104,15 @@ def main():
         import plotly
         import joblib
         import sklearn
-        print("✅ All required packages are installed")
+        print("OK: All required packages are installed")
     except ImportError:
-        print("📦 Some packages are missing")
+        print("INSTALL: Some packages are missing")
         response = input("Do you want to install requirements? (y/n): ")
         if response.lower() == 'y':
             if not install_requirements():
                 sys.exit(1)
         else:
-            print("❌ Please install requirements manually: pip install -r requirements.txt")
+            print("ERROR: Please install requirements manually: pip install -r requirements.txt")
             sys.exit(1)
     
     # Run the application

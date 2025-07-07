@@ -1,6 +1,5 @@
 ---
 title: Prediksi Pembelian Iklan Jejaring Sosial
-emoji: 🛍️
 colorFrom: blue
 colorTo: indigo
 sdk: streamlit
@@ -9,11 +8,11 @@ app_file: streamlit_app.py
 pinned: false
 ---
 
-# Prediksi Pembelian Iklan Jejaring Sosial 🛍️
+# Prediksi Pembelian Iklan Jejaring Sosial
 
 Aplikasi ini menggunakan machine learning untuk memprediksi apakah pelanggan akan membeli produk berdasarkan informasi demografis mereka.
 
-## 🚀 Fitur
+## Fitur
 
 - Prediksi individual untuk satu pelanggan
 - Prediksi batch menggunakan file CSV
@@ -21,7 +20,7 @@ Aplikasi ini menggunakan machine learning untuk memprediksi apakah pelanggan aka
 - Analisis performa model
 - Analisis kepentingan fitur
 
-## 📊 Dataset
+## Dataset
 
 Dataset berisi informasi pelanggan termasuk:
 - Usia
@@ -29,20 +28,20 @@ Dataset berisi informasi pelanggan termasuk:
 - Jenis Kelamin
 - Status Pembelian (target)
 
-## 🤖 Model
+## Model
 
 - Algoritma: Random Forest Classifier
 - Preprocessing: StandardScaler
 - Evaluasi: Validasi silang dengan metrik akurasi, presisi, recall, dan AUC
 
-## 🛠️ Teknologi
+## Teknologi
 
 - Frontend: Streamlit
 - Machine Learning: Scikit-learn
 - Data Processing: Pandas, NumPy
 - Visualisasi: Plotly, Matplotlib, Seaborn
 
-## 🌐 Deployment ke Hugging Face Spaces
+## Deployment ke Hugging Face Spaces
 
 1. Fork repository ini ke akun GitHub Anda
 
@@ -75,7 +74,7 @@ Dataset berisi informasi pelanggan termasuk:
 
 6. Space akan otomatis di-build dan di-deploy
 
-## 🏃‍♂️ Menjalankan Aplikasi Lokal
+## Menjalankan Aplikasi Lokal
 
 1. Install dependencies:
 ```bash
@@ -87,7 +86,7 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-## 🐳 Menjalankan dengan Docker
+## Menjalankan dengan Docker
 
 1. Build image:
 ```bash
@@ -99,7 +98,7 @@ docker build -t social-ads-predictor .
 docker run -p 7860:7860 social-ads-predictor
 ```
 
-## 📝 Penggunaan
+## Penggunaan
 
 1. Pilih halaman yang ingin diakses dari sidebar
 2. Untuk prediksi individual:
@@ -112,6 +111,6 @@ docker run -p 7860:7860 social-ads-predictor
    - Lihat hasil prediksi
    - Unduh hasil dalam format CSV
 
-## 👥 Kontribusi
+## Kontribusi
 
 Silakan berkontribusi dengan membuat issue atau pull request!

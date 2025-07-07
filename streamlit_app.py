@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 # Set page config
 st.set_page_config(
     page_title="Prediksi Iklan Jejaring Sosial",
-    page_icon="🛍️",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -95,7 +95,7 @@ def load_dataset():
 
 def main():
     # Main title
-    st.markdown('<h1 class="main-header">🛍️ Prediksi Pembelian Iklan Jejaring Sosial</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">Prediksi Pembelian Iklan Jejaring Sosial</h1>', unsafe_allow_html=True)
     
     # Load model objects
     model, scaler, label_encoder, feature_info, model_metrics = load_model_objects()
@@ -109,21 +109,21 @@ def main():
         st.stop()
     
     # Sidebar
-    st.sidebar.title("🔧 Navigasi")
+    st.sidebar.title("⚙️ Navigasi")
     page = st.sidebar.selectbox(
         "Pilih halaman:",
-        ["🏠 Beranda", "📊 Ikhtisar Dataset", "🔮 Buat Prediksi", "📈 Performa Model", "📋 Tentang"]
+        ["🏡 Beranda", "📈 Ikhtisar Dataset", "🎯 Buat Prediksi", "📊 Performa Model", "ℹ️ Tentang"]
     )
     
-    if page == "🏠 Beranda":
+    if page == "🏡 Beranda":
         show_home_page(df, model_metrics)
-    elif page == "📊 Ikhtisar Dataset":
+    elif page == "📈 Ikhtisar Dataset":
         show_dataset_overview(df)
-    elif page == "🔮 Buat Prediksi":
+    elif page == "🎯 Buat Prediksi":
         show_prediction_page(model, scaler, label_encoder, feature_info)
-    elif page == "📈 Performa Model":
+    elif page == "📊 Performa Model":
         show_model_performance(model_metrics, df)
-    elif page == "📋 Tentang":
+    elif page == "ℹ️ Tentang":
         show_about_page()
 
 def show_home_page(df, model_metrics):
@@ -135,7 +135,7 @@ def show_home_page(df, model_metrics):
     with col1:
         st.markdown("""
         <div class="metric-card">
-            <h3>📊 Info Dataset</h3>
+            <h3>📈 Info Dataset</h3>
             <p><strong>Total Data:</strong> {}</p>
             <p><strong>Fitur:</strong> Usia, Gaji, Jenis Kelamin</p>
             <p><strong>Target:</strong> Keputusan Pembelian</p>
